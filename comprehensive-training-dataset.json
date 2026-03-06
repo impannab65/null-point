@@ -1,0 +1,200 @@
+{
+  "metadata": {
+    "dataset_name": "SafeCampus Emergency Detection Training Dataset",
+    "version": "3.0",
+    "created_date": "2026-03-06",
+    "last_updated": "2026-03-06T10:30:00Z",
+    "total_records": 2500,
+    "data_sources": ["IoT Sensors", "Historical Records", "Simulation Data", "Real Incidents"],
+    "accuracy_target": 98.5,
+    "training_period": "2024-01-01 to 2026-03-06",
+    "validation_split": 0.2,
+    "test_split": 0.1
+  },
+  
+  "fire_detection_data": {
+    "total_samples": 650,
+    "positive_cases": 78,
+    "negative_cases": 572,
+    "features": ["temperature", "smoke_level", "co2_ppm", "visibility", "flame_detected"],
+    "samples": [
+      {"id": 1, "timestamp": "2025-12-15T08:23:14Z", "location": "Building A - Floor 3 - Room 305", "temperature_celsius": 89.5, "smoke_level": 0.78, "co2_ppm": 850, "visibility_meters": 2.3, "flame_detected": true, "humidity": 25, "detection_confidence": 98.9, "alert_triggered": true, "response_time_seconds": 12, "verification": "true_positive"},
+      {"id": 2, "timestamp": "2025-12-18T14:45:22Z", "location": "Library - Main Hall", "temperature_celsius": 22.1, "smoke_level": 0.03, "co2_ppm": 420, "visibility_meters": 50, "flame_detected": false, "humidity": 45, "detection_confidence": 99.5, "alert_triggered": false, "response_time_seconds": 0, "verification": "true_negative"},
+      {"id": 3, "timestamp": "2025-12-20T10:12:08Z", "location": "Cafeteria - Kitchen Area", "temperature_celsius": 95.2, "smoke_level": 0.85, "co2_ppm": 920, "visibility_meters": 1.8, "flame_detected": true, "humidity": 22, "detection_confidence": 99.2, "alert_triggered": true, "response_time_seconds": 8, "verification": "true_positive"},
+      {"id": 4, "timestamp": "2026-01-05T16:30:45Z", "location": "Dormitory B - Floor 2", "temperature_celsius": 24.5, "smoke_level": 0.12, "co2_ppm": 480, "visibility_meters": 45, "flame_detected": false, "humidity": 50, "detection_confidence": 97.8, "alert_triggered": false, "response_time_seconds": 0, "verification": "true_negative"},
+      {"id": 5, "timestamp": "2026-01-12T09:05:33Z", "location": "Laboratory - Chemistry Lab", "temperature_celsius": 78.3, "smoke_level": 0.65, "co2_ppm": 750, "visibility_meters": 4.2, "flame_detected": true, "humidity": 28, "detection_confidence": 96.7, "alert_triggered": true, "response_time_seconds": 15, "verification": "true_positive"},
+      {"id": 6, "timestamp": "2026-01-18T11:22:19Z", "location": "Gymnasium - Main Floor", "temperature_celsius": 26.8, "smoke_level": 0.05, "co2_ppm": 520, "visibility_meters": 60, "flame_detected": false, "humidity": 42, "detection_confidence": 99.1, "alert_triggered": false, "response_time_seconds": 0, "verification": "true_negative"},
+      {"id": 7, "timestamp": "2026-02-03T13:48:27Z", "location": "Auditorium - Stage Area", "temperature_celsius": 92.1, "smoke_level": 0.82, "co2_ppm": 880, "visibility_meters": 2.1, "flame_detected": true, "humidity": 24, "detection_confidence": 98.4, "alert_triggered": true, "response_time_seconds": 10, "verification": "true_positive"},
+      {"id": 8, "timestamp": "2026-02-14T07:15:52Z", "location": "Administration - Server Room", "temperature_celsius": 28.2, "smoke_level": 0.08, "co2_ppm": 450, "visibility_meters": 48, "flame_detected": false, "humidity": 38, "detection_confidence": 98.9, "alert_triggered": false, "response_time_seconds": 0, "verification": "true_negative"},
+      {"id": 9, "timestamp": "2026-02-22T15:33:41Z", "location": "Engineering Building - Workshop", "temperature_celsius": 86.7, "smoke_level": 0.72, "co2_ppm": 810, "visibility_meters": 3.1, "flame_detected": true, "humidity": 26, "detection_confidence": 97.5, "alert_triggered": true, "response_time_seconds": 13, "verification": "true_positive"},
+      {"id": 10, "timestamp": "2026-03-01T12:07:28Z", "location": "Student Center - Food Court", "temperature_celsius": 25.3, "smoke_level": 0.06, "co2_ppm": 500, "visibility_meters": 55, "flame_detected": false, "humidity": 46, "detection_confidence": 99.3, "alert_triggered": false, "response_time_seconds": 0, "verification": "true_negative"}
+    ],
+    "model_performance": {
+      "accuracy": 98.5,
+      "precision": 98.7,
+      "recall": 97.4,
+      "f1_score": 98.1,
+      "false_positive_rate": 0.012,
+      "false_negative_rate": 0.026
+    }
+  },
+  
+  "seismic_activity_data": {
+    "total_samples": 580,
+    "positive_cases": 42,
+    "negative_cases": 538,
+    "features": ["magnitude", "depth_km", "epicenter_distance_km", "p_wave_velocity", "s_wave_velocity", "vertical_acceleration"],
+    "samples": [
+      {"id": 1, "timestamp": "2025-11-08T04:23:17Z", "magnitude": 4.8, "depth_km": 12, "epicenter_distance_km": 28, "p_wave_velocity_ms": 6.2, "s_wave_velocity_ms": 3.5, "vertical_acceleration_g": 0.085, "horizontal_acceleration_g": 0.072, "duration_seconds": 18, "detection_confidence": 98.6, "alert_triggered": true, "verification": "true_positive"},
+      {"id": 2, "timestamp": "2025-11-22T14:56:33Z", "magnitude": 2.1, "depth_km": 25, "epicenter_distance_km": 65, "p_wave_velocity_ms": 5.1, "s_wave_velocity_ms": 2.8, "vertical_acceleration_g": 0.008, "horizontal_acceleration_g": 0.006, "duration_seconds": 4, "detection_confidence": 96.2, "alert_triggered": false, "verification": "true_negative"},
+      {"id": 3, "timestamp": "2025-12-05T18:41:29Z", "magnitude": 5.2, "depth_km": 8, "epicenter_distance_km": 18, "p_wave_velocity_ms": 6.8, "s_wave_velocity_ms": 3.9, "vertical_acceleration_g": 0.142, "horizontal_acceleration_g": 0.125, "duration_seconds": 25, "detection_confidence": 99.1, "alert_triggered": true, "verification": "true_positive"},
+      {"id": 4, "timestamp": "2025-12-19T09:12:44Z", "magnitude": 1.8, "depth_km": 32, "epicenter_distance_km": 78, "p_wave_velocity_ms": 4.9, "s_wave_velocity_ms": 2.6, "vertical_acceleration_g": 0.005, "horizontal_acceleration_g": 0.004, "duration_seconds": 3, "detection_confidence": 95.7, "alert_triggered": false, "verification": "true_negative"},
+      {"id": 5, "timestamp": "2026-01-07T22:38:51Z", "magnitude": 3.9, "depth_km": 15, "epicenter_distance_km": 42, "p_wave_velocity_ms": 5.8, "s_wave_velocity_ms": 3.2, "vertical_acceleration_g": 0.045, "horizontal_acceleration_g": 0.038, "duration_seconds": 12, "detection_confidence": 94.3, "alert_triggered": false, "verification": "true_negative"},
+      {"id": 6, "timestamp": "2026-01-21T06:15:22Z", "magnitude": 4.5, "depth_km": 10, "epicenter_distance_km": 32, "p_wave_velocity_ms": 6.4, "s_wave_velocity_ms": 3.6, "vertical_acceleration_g": 0.098, "horizontal_acceleration_g": 0.084, "duration_seconds": 20, "detection_confidence": 97.8, "alert_triggered": true, "verification": "true_positive"},
+      {"id": 7, "timestamp": "2026-02-08T11:47:36Z", "magnitude": 2.5, "depth_km": 28, "epicenter_distance_km": 58, "p_wave_velocity_ms": 5.3, "s_wave_velocity_ms": 2.9, "vertical_acceleration_g": 0.012, "horizontal_acceleration_g": 0.010, "duration_seconds": 6, "detection_confidence": 96.5, "alert_triggered": false, "verification": "true_negative"},
+      {"id": 8, "timestamp": "2026-02-18T16:29:08Z", "magnitude": 5.8, "depth_km": 6, "epicenter_distance_km": 15, "p_wave_velocity_ms": 7.1, "s_wave_velocity_ms": 4.2, "vertical_acceleration_g": 0.215, "horizontal_acceleration_g": 0.188, "duration_seconds": 32, "detection_confidence": 99.4, "alert_triggered": true, "verification": "true_positive"},
+      {"id": 9, "timestamp": "2026-02-25T20:55:42Z", "magnitude": 3.2, "depth_km": 22, "epicenter_distance_km": 52, "p_wave_velocity_ms": 5.5, "s_wave_velocity_ms": 3.0, "vertical_acceleration_g": 0.028, "horizontal_acceleration_g": 0.024, "duration_seconds": 9, "detection_confidence": 93.8, "alert_triggered": false, "verification": "true_negative"},
+      {"id": 10, "timestamp": "2026-03-03T13:22:17Z", "magnitude": 4.2, "depth_km": 14, "epicenter_distance_km": 38, "p_wave_velocity_ms": 6.0, "s_wave_velocity_ms": 3.4, "vertical_acceleration_g": 0.068, "horizontal_acceleration_g": 0.058, "duration_seconds": 16, "detection_confidence": 95.9, "alert_triggered": true, "verification": "true_positive"}
+    ],
+    "model_performance": {
+      "accuracy": 96.2,
+      "precision": 95.8,
+      "recall": 92.9,
+      "f1_score": 94.3,
+      "false_positive_rate": 0.015,
+      "false_negative_rate": 0.071
+    }
+  },
+  
+  "flood_monitoring_data": {
+    "total_samples": 620,
+    "positive_cases": 56,
+    "negative_cases": 564,
+    "features": ["water_level_cm", "rainfall_mm_hour", "drainage_capacity_percent", "soil_moisture", "river_flow_rate"],
+    "samples": [
+      {"id": 1, "timestamp": "2025-10-12T06:15:22Z", "location": "Basement Level 1", "water_level_cm": 32, "rainfall_mm_hour": 95.5, "drainage_capacity_percent": 92, "soil_moisture_percent": 88, "river_flow_rate_m3s": 145, "flood_zone": "High Risk", "detection_confidence": 97.8, "alert_triggered": true, "verification": "true_positive"},
+      {"id": 2, "timestamp": "2025-10-28T11:42:38Z", "location": "Parking Lot B", "water_level_cm": 4, "rainfall_mm_hour": 12.3, "drainage_capacity_percent": 45, "soil_moisture_percent": 42, "river_flow_rate_m3s": 38, "flood_zone": "Low Risk", "detection_confidence": 96.5, "alert_triggered": false, "verification": "true_negative"},
+      {"id": 3, "timestamp": "2025-11-15T16:28:51Z", "location": "Sports Complex - Field", "water_level_cm": 28, "rainfall_mm_hour": 82.1, "drainage_capacity_percent": 88, "soil_moisture_percent": 82, "river_flow_rate_m3s": 128, "flood_zone": "Medium Risk", "detection_confidence": 95.3, "alert_triggered": true, "verification": "true_positive"},
+      {"id": 4, "timestamp": "2025-12-03T08:17:29Z", "location": "Garden Area", "water_level_cm": 6, "rainfall_mm_hour": 18.7, "drainage_capacity_percent": 52, "soil_moisture_percent": 48, "river_flow_rate_m3s": 45, "flood_zone": "Low Risk", "detection_confidence": 97.2, "alert_triggered": false, "verification": "true_negative"},
+      {"id": 5, "timestamp": "2025-12-22T14:55:44Z", "location": "Underground Parking", "water_level_cm": 38, "rainfall_mm_hour": 108.2, "drainage_capacity_percent": 96, "soil_moisture_percent": 92, "river_flow_rate_m3s": 168, "flood_zone": "Critical", "detection_confidence": 98.9, "alert_triggered": true, "verification": "true_positive"},
+      {"id": 6, "timestamp": "2026-01-09T10:33:12Z", "location": "Central Plaza", "water_level_cm": 3, "rainfall_mm_hour": 8.5, "drainage_capacity_percent": 38, "soil_moisture_percent": 35, "river_flow_rate_m3s": 28, "flood_zone": "Low Risk", "detection_confidence": 98.1, "alert_triggered": false, "verification": "true_negative"},
+      {"id": 7, "timestamp": "2026-01-28T18:22:37Z", "location": "Campus Lake Area", "water_level_cm": 42, "rainfall_mm_hour": 125.8, "drainage_capacity_percent": 98, "soil_moisture_percent": 95, "river_flow_rate_m3s": 195, "flood_zone": "Critical", "detection_confidence": 99.2, "alert_triggered": true, "verification": "true_positive"},
+      {"id": 8, "timestamp": "2026-02-11T12:48:26Z", "location": "East Entrance", "water_level_cm": 5, "rainfall_mm_hour": 15.2, "drainage_capacity_percent": 48, "soil_moisture_percent": 44, "river_flow_rate_m3s": 42, "flood_zone": "Low Risk", "detection_confidence": 96.8, "alert_triggered": false, "verification": "true_negative"},
+      {"id": 9, "timestamp": "2026-02-24T07:19:55Z", "location": "Basement Level 2", "water_level_cm": 35, "rainfall_mm_hour": 98.7, "drainage_capacity_percent": 94, "soil_moisture_percent": 89, "river_flow_rate_m3s": 152, "flood_zone": "High Risk", "detection_confidence": 97.5, "alert_triggered": true, "verification": "true_positive"},
+      {"id": 10, "timestamp": "2026-03-04T15:27:41Z", "location": "North Pathway", "water_level_cm": 7, "rainfall_mm_hour": 22.4, "drainage_capacity_percent": 58, "soil_moisture_percent": 52, "river_flow_rate_m3s": 52, "flood_zone": "Low Risk", "detection_confidence": 95.9, "alert_triggered": false, "verification": "true_negative"}
+    ],
+    "model_performance": {
+      "accuracy": 94.7,
+      "precision": 94.2,
+      "recall": 91.1,
+      "f1_score": 92.6,
+      "false_positive_rate": 0.018,
+      "false_negative_rate": 0.089
+    }
+  },
+  
+  "storm_cyclone_data": {
+    "total_samples": 650,
+    "positive_cases": 68,
+    "negative_cases": 582,
+    "features": ["wind_speed_kmh", "atmospheric_pressure_mb", "temperature", "humidity", "cloud_coverage", "storm_category"],
+    "samples": [
+      {"id": 1, "timestamp": "2025-09-18T02:45:33Z", "wind_speed_kmh": 78, "atmospheric_pressure_mb": 982, "temperature_celsius": 24, "humidity_percent": 88, "cloud_coverage_percent": 95, "storm_category": "Moderate", "wind_direction": "Northeast", "rainfall_rate_mmh": 42, "detection_confidence": 98.3, "alert_triggered": true, "verification": "true_positive"},
+      {"id": 2, "timestamp": "2025-10-05T11:22:48Z", "wind_speed_kmh": 28, "atmospheric_pressure_mb": 1012, "temperature_celsius": 22, "humidity_percent": 52, "cloud_coverage_percent": 35, "storm_category": "Low", "wind_direction": "Southeast", "rainfall_rate_mmh": 5, "detection_confidence": 97.8, "alert_triggered": false, "verification": "true_negative"},
+      {"id": 3, "timestamp": "2025-10-22T16:38:19Z", "wind_speed_kmh": 95, "atmospheric_pressure_mb": 968, "temperature_celsius": 23, "humidity_percent": 92, "cloud_coverage_percent": 98, "storm_category": "Severe", "wind_direction": "North", "rainfall_rate_mmh": 68, "detection_confidence": 99.1, "alert_triggered": true, "verification": "true_positive"},
+      {"id": 4, "timestamp": "2025-11-12T08:15:27Z", "wind_speed_kmh": 32, "atmospheric_pressure_mb": 1015, "temperature_celsius": 21, "humidity_percent": 48, "cloud_coverage_percent": 28, "storm_category": "Low", "wind_direction": "West", "rainfall_rate_mmh": 3, "detection_confidence": 98.5, "alert_triggered": false, "verification": "true_negative"},
+      {"id": 5, "timestamp": "2025-11-28T19:52:41Z", "wind_speed_kmh": 112, "atmospheric_pressure_mb": 952, "temperature_celsius": 25, "humidity_percent": 94, "cloud_coverage_percent": 100, "storm_category": "Critical", "wind_direction": "Northeast", "rainfall_rate_mmh": 95, "detection_confidence": 99.6, "alert_triggered": true, "verification": "true_positive"},
+      {"id": 6, "timestamp": "2025-12-14T13:28:56Z", "wind_speed_kmh": 25, "atmospheric_pressure_mb": 1018, "temperature_celsius": 20, "humidity_percent": 45, "cloud_coverage_percent": 22, "storm_category": "Low", "wind_direction": "South", "rainfall_rate_mmh": 2, "detection_confidence": 97.2, "alert_triggered": false, "verification": "true_negative"},
+      {"id": 7, "timestamp": "2026-01-03T21:47:13Z", "wind_speed_kmh": 88, "atmospheric_pressure_mb": 975, "temperature_celsius": 24, "humidity_percent": 89, "cloud_coverage_percent": 96, "storm_category": "Moderate", "wind_direction": "East", "rainfall_rate_mmh": 52, "detection_confidence": 98.7, "alert_triggered": true, "verification": "true_positive"},
+      {"id": 8, "timestamp": "2026-01-19T10:12:38Z", "wind_speed_kmh": 35, "atmospheric_pressure_mb": 1010, "temperature_celsius": 22, "humidity_percent": 55, "cloud_coverage_percent": 42, "storm_category": "Low", "wind_direction": "Northwest", "rainfall_rate_mmh": 8, "detection_confidence": 96.9, "alert_triggered": false, "verification": "true_negative"},
+      {"id": 9, "timestamp": "2026-02-06T15:35:22Z", "wind_speed_kmh": 102, "atmospheric_pressure_mb": 962, "temperature_celsius": 26, "humidity_percent": 91, "cloud_coverage_percent": 99, "storm_category": "Severe", "wind_direction": "North", "rainfall_rate_mmh": 78, "detection_confidence": 99.3, "alert_triggered": true, "verification": "true_positive"},
+      {"id": 10, "timestamp": "2026-02-28T09:48:17Z", "wind_speed_kmh": 29, "atmospheric_pressure_mb": 1014, "temperature_celsius": 21, "humidity_percent": 50, "cloud_coverage_percent": 32, "storm_category": "Low", "wind_direction": "Southwest", "rainfall_rate_mmh": 4, "detection_confidence": 97.5, "alert_triggered": false, "verification": "true_negative"}
+    ],
+    "model_performance": {
+      "accuracy": 97.1,
+      "precision": 96.8,
+      "recall": 94.1,
+      "f1_score": 95.4,
+      "false_positive_rate": 0.013,
+      "false_negative_rate": 0.059
+    }
+  },
+  
+  "sensor_network_status": {
+    "total_sensors": 280,
+    "active_sensors": 277,
+    "offline_sensors": 3,
+    "sensors_by_type": {
+      "temperature": 85,
+      "smoke_detector": 78,
+      "seismic": 42,
+      "water_level": 38,
+      "weather_station": 37
+    },
+    "maintenance_schedule": {
+      "last_calibration": "2026-02-15",
+      "next_calibration": "2026-05-15",
+      "last_inspection": "2026-03-01",
+      "next_inspection": "2026-04-01"
+    },
+    "coverage_zones": {
+      "academic_buildings": 98.5,
+      "dormitories": 96.8,
+      "outdoor_areas": 89.2,
+      "parking_lots": 92.4,
+      "sports_facilities": 94.1
+    }
+  },
+  
+  "training_configuration": {
+    "algorithms_used": ["Random Forest", "Neural Network", "SVM", "Gradient Boosting"],
+    "best_model": "Neural Network with 4 hidden layers",
+    "hyperparameters": {
+      "learning_rate": 0.001,
+      "batch_size": 64,
+      "epochs": 150,
+      "dropout_rate": 0.3,
+      "optimizer": "Adam"
+    },
+    "feature_importance": {
+      "fire": ["temperature", "smoke_level", "flame_detected"],
+      "earthquake": ["magnitude", "depth", "vertical_acceleration"],
+      "flood": ["water_level", "rainfall_rate", "drainage_capacity"],
+      "storm": ["wind_speed", "atmospheric_pressure", "storm_category"]
+    }
+  },
+  
+  "overall_system_performance": {
+    "combined_accuracy": 96.8,
+    "average_response_time_seconds": 11.2,
+    "system_uptime_percent": 99.97,
+    "false_alarm_rate": 1.45,
+    "missed_detection_rate": 2.86,
+    "total_alerts_generated": 244,
+    "confirmed_emergencies": 238,
+    "false_alarms": 6,
+    "data_collection_period_days": 790,
+    "last_model_update": "2026-03-01T08:00:00Z"
+  },
+  
+  "recommendations": {
+    "model_improvements": [
+      "Increase training data for flood detection (current: 620 samples, target: 1000+)",
+      "Add more edge cases for earthquake magnitude between 3.5-4.5",
+      "Implement ensemble methods to reduce false positives",
+      "Add temporal analysis for pattern recognition"
+    ],
+    "sensor_upgrades": [
+      "Replace 3 offline sensors in Parking Lot C",
+      "Add 15 additional smoke detectors in new construction",
+      "Upgrade weather station to include wind vane sensors",
+      "Install backup power for critical sensors"
+    ],
+    "system_enhancements": [
+      "Implement real-time data streaming from all sensors",
+      "Add predictive analytics for early warning (30-60 seconds advance)",
+      "Integrate with campus emergency communication system",
+      "Deploy mobile app for instant alert notifications"
+    ]
+  }
+}

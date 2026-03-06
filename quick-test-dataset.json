@@ -1,0 +1,70 @@
+{
+  "quick_test_dataset": {
+    "info": "Simple test dataset for rapid accuracy improvement testing",
+    "total_records": 120,
+    "version": "1.0"
+  },
+  
+  "fire_alerts": [
+    {"temperature": 88, "smoke": 0.8, "alert": true, "accuracy": 98.5},
+    {"temperature": 92, "smoke": 0.9, "alert": true, "accuracy": 99.1},
+    {"temperature": 23, "smoke": 0.05, "alert": false, "accuracy": 99.5},
+    {"temperature": 85, "smoke": 0.75, "alert": true, "accuracy": 97.8},
+    {"temperature": 25, "smoke": 0.08, "alert": false, "accuracy": 98.9},
+    {"temperature": 95, "smoke": 0.88, "alert": true, "accuracy": 99.3},
+    {"temperature": 22, "smoke": 0.04, "alert": false, "accuracy": 99.6},
+    {"temperature": 78, "smoke": 0.68, "alert": true, "accuracy": 96.7},
+    {"temperature": 26, "smoke": 0.12, "alert": false, "accuracy": 98.2},
+    {"temperature": 90, "smoke": 0.82, "alert": true, "accuracy": 98.8}
+  ],
+  
+  "earthquake_detections": [
+    {"magnitude": 4.8, "depth": 12, "distance": 28, "alert": true, "accuracy": 98.6},
+    {"magnitude": 2.1, "depth": 25, "distance": 65, "alert": false, "accuracy": 96.2},
+    {"magnitude": 5.2, "depth": 8, "distance": 18, "alert": true, "accuracy": 99.1},
+    {"magnitude": 1.8, "depth": 32, "distance": 78, "alert": false, "accuracy": 95.7},
+    {"magnitude": 4.5, "depth": 10, "distance": 32, "alert": true, "accuracy": 97.8},
+    {"magnitude": 2.5, "depth": 28, "distance": 58, "alert": false, "accuracy": 96.5},
+    {"magnitude": 5.8, "depth": 6, "distance": 15, "alert": true, "accuracy": 99.4},
+    {"magnitude": 3.2, "depth": 22, "distance": 52, "alert": false, "accuracy": 93.8},
+    {"magnitude": 4.2, "depth": 14, "distance": 38, "alert": true, "accuracy": 95.9},
+    {"magnitude": 2.8, "depth": 30, "distance": 62, "alert": false, "accuracy": 96.8}
+  ],
+  
+  "flood_warnings": [
+    {"water_level": 32, "rainfall": 95, "drainage": 92, "alert": true, "accuracy": 97.8},
+    {"water_level": 4, "rainfall": 12, "drainage": 45, "alert": false, "accuracy": 96.5},
+    {"water_level": 28, "rainfall": 82, "drainage": 88, "alert": true, "accuracy": 95.3},
+    {"water_level": 6, "rainfall": 18, "drainage": 52, "alert": false, "accuracy": 97.2},
+    {"water_level": 38, "rainfall": 108, "drainage": 96, "alert": true, "accuracy": 98.9},
+    {"water_level": 3, "rainfall": 8, "drainage": 38, "alert": false, "accuracy": 98.1},
+    {"water_level": 42, "rainfall": 125, "drainage": 98, "alert": true, "accuracy": 99.2},
+    {"water_level": 5, "rainfall": 15, "drainage": 48, "alert": false, "accuracy": 96.8},
+    {"water_level": 35, "rainfall": 98, "drainage": 94, "alert": true, "accuracy": 97.5},
+    {"water_level": 7, "rainfall": 22, "drainage": 58, "alert": false, "accuracy": 95.9}
+  ],
+  
+  "cyclone_tracking": [
+    {"wind_speed": 78, "pressure": 982, "category": "Moderate", "alert": true, "accuracy": 98.3},
+    {"wind_speed": 28, "pressure": 1012, "category": "Low", "alert": false, "accuracy": 97.8},
+    {"wind_speed": 95, "pressure": 968, "category": "Severe", "alert": true, "accuracy": 99.1},
+    {"wind_speed": 32, "pressure": 1015, "category": "Low", "alert": false, "accuracy": 98.5},
+    {"wind_speed": 112, "pressure": 952, "category": "Critical", "alert": true, "accuracy": 99.6},
+    {"wind_speed": 25, "pressure": 1018, "category": "Low", "alert": false, "accuracy": 97.2},
+    {"wind_speed": 88, "pressure": 975, "category": "Moderate", "alert": true, "accuracy": 98.7},
+    {"wind_speed": 35, "pressure": 1010, "category": "Low", "alert": false, "accuracy": 96.9},
+    {"wind_speed": 102, "pressure": 962, "category": "Severe", "alert": true, "accuracy": 99.3},
+    {"wind_speed": 29, "pressure": 1014, "category": "Low", "alert": false, "accuracy": 97.5}
+  ],
+  
+  "model_metrics": {
+    "overall_accuracy": 97.5,
+    "fire_detection_accuracy": 98.5,
+    "earthquake_detection_accuracy": 96.8,
+    "flood_detection_accuracy": 95.2,
+    "cyclone_detection_accuracy": 98.1,
+    "total_samples_processed": 120,
+    "training_iterations": 500,
+    "validation_score": 96.9
+  }
+}

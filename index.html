@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚨</text></svg>">
+    <title>SafeCampus - Emergency Preparedness System</title>
+    
+    <!-- Google Fonts - Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    
+    <!-- TailwindCSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css" />
+    
+    <!-- Tailwind Config -->
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              'poppins': ['Poppins', 'sans-serif']
+            }
+          }
+        }
+      }
+    </script>
+  </head>
+  <body class="font-poppins bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    
+    <!-- Loading Animation -->
+    <div id="loader" class="loader-container">
+      <div class="loader"></div>
+      <p class="loader-text">Loading SafeCampus...</p>
+    </div>
+
+    <!-- Emergency Alert Banner -->
+    <div id="alertBanner" class="alert-banner">
+      <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">🚨</span>
+          <span class="font-semibold">EMERGENCY PREPAREDNESS SYSTEM ACTIVE</span>
+        </div>
+        <button data-action="close-alert" class="text-white hover:text-gray-200">
+          ✕
+        </button>
+      </div>
+    </div>
+
+    <!-- Dark Mode Toggle -->
+    <button id="themeToggle" class="theme-toggle">
+      <span class="sun-icon">☀️</span>
+      <span class="moon-icon hidden">🌙</span>
+    </button>
+
+    <!-- Panic Button -->
+    <button id="panicButton" class="panic-button" title="Emergency Mode">
+      <span class="panic-icon">🚨</span>
+      <span class="panic-text">EMERGENCY</span>
+    </button>
+
+    <!-- Emergency Mode Modal -->
+    <div id="emergencyModal" class="emergency-overlay hidden">
+      <div class="emergency-container">
+        <div class="emergency-header">
+          <span class="emergency-flashing-icon">🚨</span>
+          <h1>EMERGENCY MODE ACTIVATED</h1>
+        </div>
+        <div class="emergency-body">
+          <p class="emergency-message">Quick Access to Emergency Contacts</p>
+          <div class="emergency-contacts-grid">
+            <div class="emergency-contact-card">
+              <span class="contact-icon">👮</span>
+              <h3>Police</h3>
+              <p class="contact-number">112</p>
+            </div>
+            <div class="emergency-contact-card">
+              <span class="contact-icon">🚒</span>
+              <h3>Fire Department</h3>
+              <p class="contact-number">101</p>
+            </div>
+            <div class="emergency-contact-card">
+              <span class="contact-icon">🚑</span>
+              <h3>Ambulance</h3>
+              <p class="contact-number">102</p>
+            </div>
+            <div class="emergency-contact-card">
+              <span class="contact-icon">🛡️</span>
+              <h3>Campus Security</h3>
+              <p class="contact-number">1800-SAFE</p>
+            </div>
+          </div>
+        </div>
+        <button id="closeEmergency" class="emergency-close-button">Close Emergency Mode</button>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient">
+      <div class="container mx-auto px-4 py-20 text-center">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            SafeCampus Emergency Preparedness
+          </h1>
+          <p class="hero-subtitle">
+            Learn how to respond quickly during campus disasters
+          </p>
+          <button class="start-button" data-action="scroll-to-modules">
+            <span>Start Learning</span>
+            <span class="arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <div class="container mx-auto px-4 py-12">
+
+      <!-- Active Alerts & Monitoring Dashboard -->
+      <section id="monitoring" class="mb-16">
+        <div class="section-header">
+          <h2 class="section-title">🚨 Real-Time Monitoring System</h2>
+          <p class="section-subtitle">AI-powered detection with live accuracy metrics</p>
+        </div>
+
+        <!-- Active Alerts Container -->
+        <div id="activeAlerts" class="mb-8">
+          <!-- Alerts will be dynamically generated -->
+        </div>
+
+        <!-- Monitoring Dashboard -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <!-- Fire Detection -->
+          <div class="monitor-card">
+            <div class="monitor-icon">🔥</div>
+            <h3 class="monitor-title">Fire Detection</h3>
+            <div class="monitor-status">
+              <span class="status-label">Status:</span>
+              <span id="fireStatus" class="status-value monitoring">Monitoring</span>
+            </div>
+            <div class="monitor-accuracy">
+              <span class="accuracy-label">Accuracy:</span>
+              <span id="fireAccuracy" class="accuracy-value">98.5%</span>
+            </div>
+            <div class="monitor-progress">
+              <div id="fireProgress" class="progress-fill" style="width: 98.5%"></div>
+            </div>
+          </div>
+
+          <!-- Earthquake Detection -->
+          <div class="monitor-card">
+            <div class="monitor-icon">🏚️</div>
+            <h3 class="monitor-title">Seismic Activity</h3>
+            <div class="monitor-status">
+              <span class="status-label">Status:</span>
+              <span id="earthquakeStatus" class="status-value monitoring">Monitoring</span>
+            </div>
+            <div class="monitor-accuracy">
+              <span class="accuracy-label">Accuracy:</span>
+              <span id="earthquakeAccuracy" class="accuracy-value">96.2%</span>
+            </div>
+            <div class="monitor-progress">
+              <div id="earthquakeProgress" class="progress-fill" style="width: 96.2%"></div>
+            </div>
+          </div>
+
+          <!-- Flood Detection -->
+          <div class="monitor-card">
+            <div class="monitor-icon">🌊</div>
+            <h3 class="monitor-title">Flood Detection</h3>
+            <div class="monitor-status">
+              <span class="status-label">Status:</span>
+              <span id="floodStatus" class="status-value monitoring">Monitoring</span>
+            </div>
+            <div class="monitor-accuracy">
+              <span class="accuracy-label">Accuracy:</span>
+              <span id="floodAccuracy" class="accuracy-value">94.7%</span>
+            </div>
+            <div class="monitor-progress">
+              <div id="floodProgress" class="progress-fill" style="width: 94.7%"></div>
+            </div>
+          </div>
+
+          <!-- Cyclone Detection -->
+          <div class="monitor-card">
+            <div class="monitor-icon">🌀</div>
+            <h3 class="monitor-title">Storm Tracking</h3>
+            <div class="monitor-status">
+              <span class="status-label">Status:</span>
+              <span id="cycloneStatus" class="status-value monitoring">Monitoring</span>
+            </div>
+            <div class="monitor-accuracy">
+              <span class="accuracy-label">Accuracy:</span>
+              <span id="cycloneAccuracy" class="accuracy-value">97.1%</span>
+            </div>
+            <div class="monitor-progress">
+              <div id="cycloneProgress" class="progress-fill" style="width: 97.1%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dataset Upload Section -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
+          <h3 class="text-2xl font-bold mb-4 dark:text-white">📊 Upload Detection Dataset</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-6">Upload JSON datasets to train and improve detection accuracy</p>
+          
+          <div class="upload-container">
+            <input type="file" id="datasetUpload" accept=".json" class="hidden" />
+            <label for="datasetUpload" class="upload-button">
+              <span class="upload-icon">📁</span>
+              <span>Choose JSON File</span>
+            </label>
+            <div id="uploadStatus" class="upload-status"></div>
+          </div>
+
+          <div id="datasetInfo" class="dataset-info mt-6 hidden">
+            <h4 class="font-semibold text-lg mb-3 dark:text-white">Dataset Information</h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="info-card">
+                <span class="info-label">Records:</span>
+                <span id="datasetRecords" class="info-value">0</span>
+              </div>
+              <div class="info-card">
+                <span class="info-label">File Size:</span>
+                <span id="datasetSize" class="info-value">0 KB</span>
+              </div>
+              <div class="info-card">
+                <span class="info-label">Last Updated:</span>
+                <span id="datasetTime" class="info-value">-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Disaster Learning Modules -->
+      <section id="modules" class="mb-16">
+        <div class="section-header">
+          <h2 class="section-title">Disaster Learning Modules</h2>
+          <p class="section-subtitle">Select a disaster type to learn emergency response procedures</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="disasterCards">
+          <!-- Cards will be generated dynamically -->
+        </div>
+      </section>
+
+      <!-- Scenario-Based Guidance -->
+      <section id="scenario" class="mb-16">
+        <div class="section-header">
+          <h2 class="section-title">Scenario-Based Guidance</h2>
+          <p class="section-subtitle">Step-by-step emergency response instructions</p>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg mb-6">
+          <div class="flex flex-col md:flex-row gap-4 items-stretch md:items-center">
+            <div class="flex-1">
+              <label for="disasterSelect" class="block text-lg font-semibold mb-3 dark:text-white">
+                Select Disaster Type:
+              </label>
+              <select id="disasterSelect" class="disaster-select">
+                <option value="EARTHQUAKE">EARTHQUAKE</option>
+                <option value="FIRE">FIRE</option>
+                <option value="FLOOD">FLOOD</option>
+                <option value="CYCLONE">CYCLONE</option>
+              </select>
+            </div>
+            <button id="voiceToggle" class="voice-toggle-btn" title="Enable/Disable Voice Guidance">
+              <span class="voice-icon">🔊</span>
+              <span>Voice Guidance</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Emergency Timer -->
+        <div id="emergencyTimer" class="emergency-timer hidden">
+          <div class="timer-content">
+            <span class="timer-label">⏱️ Evacuation Timer</span>
+            <div class="timer-display">
+              <span id="timerMinutes">00</span>:<span id="timerSeconds">60</span>
+            </div>
+            <span class="timer-sublabel">seconds remaining</span>
+          </div>
+        </div>
+
+        <div id="responseSteps" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Steps will be generated dynamically -->
+        </div>
+      </section>
+
+      <!-- Safety Tips Section -->
+      <section id="safety-tips" class="mb-16">
+        <div class="section-header">
+          <h2 class="section-title">💡 Safety Tip of the Moment</h2>
+          <p class="section-subtitle">Quick safety reminders updated every 5 seconds</p>
+        </div>
+        <div class="safety-tip-card">
+          <div class="tip-icon">💡</div>
+          <p id="safetyTipText" class="tip-text">Always know the nearest emergency exit.</p>
+          <button id="nextTipButton" class="next-tip-btn">Next Tip →</button>
+        </div>
+      </section>
+
+      <!-- Preparedness Checklist -->
+      <section id="checklist" class="mb-16">
+        <div class="section-header">
+          <h2 class="section-title">Preparedness Checklist</h2>
+          <p class="section-subtitle">Track your emergency readiness level</p>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
+          <div class="checklist-container" id="checklistContainer">
+            <!-- Checklist items will be generated dynamically -->
+          </div>
+
+          <div class="mt-8">
+            <div class="flex justify-between items-center mb-2">
+              <span class="font-semibold dark:text-white">Preparedness Score:</span>
+              <span id="scoreValue" class="text-2xl font-bold score-text">0%</span>
+            </div>
+            <div class="progress-bar-container">
+              <div id="progressBar" class="progress-bar"></div>
+            </div>
+            <div class="mt-4 text-center">
+              <span id="statusBadge" class="status-badge status-needs">Needs Improvement</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Emergency Resources -->
+      <section id="resources" class="mb-16">
+        <div class="section-header">
+          <h2 class="section-title">Emergency Resources</h2>
+          <p class="section-subtitle">Quick access to emergency contacts</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="resource-card">
+            <div class="resource-icon">👮</div>
+            <h3 class="resource-title">Police</h3>
+            <p class="resource-number">112</p>
+          </div>
+          <div class="resource-card">
+            <div class="resource-icon">🚒</div>
+            <h3 class="resource-title">Fire Department</h3>
+            <p class="resource-number">101</p>
+          </div>
+          <div class="resource-card">
+            <div class="resource-icon">🚑</div>
+            <h3 class="resource-title">Ambulance</h3>
+            <p class="resource-number">102</p>
+          </div>
+          <div class="resource-card">
+            <div class="resource-icon">🛡️</div>
+            <h3 class="resource-title">Campus Security</h3>
+            <p class="resource-number">1800-SAFE</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Campus Safety Map -->
+      <section id="campus-map" class="mb-16">
+        <div class="section-header">
+          <h2 class="section-title">📄 Campus Safety Map</h2>
+          <p class="section-subtitle">Know your campus emergency locations</p>
+        </div>
+        <div class="campus-map-container">
+          <div class="map-legend">
+            <div class="legend-item">
+              <span class="legend-icon">🚚</span>
+              <span>Emergency Exit</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-icon">📅</span>
+              <span>Assembly Point</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-icon">⚕️</span>
+              <span>Medical Center</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-icon">🧱</span>
+              <span>Fire Extinguisher</span>
+            </div>
+          </div>
+          <div class="map-placeholder">
+            <span class="map-icon">🏢</span>
+            <p>Campus Map Visualization</p>
+            <p class="map-info">Emergency Location Reference Guide</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- JSON Schema Output -->
+      <section id="json-output" class="mb-16">
+        <div class="section-header">
+          <h2 class="section-title">Live Response Data</h2>
+          <p class="section-subtitle">Real-time disaster response output</p>
+        </div>
+
+        <!-- Visual Output Display -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div class="output-card">
+            <h3 class="output-label">Disaster Type</h3>
+            <p id="outputDisasterType" class="output-value">EARTHQUAKE</p>
+          </div>
+          <div class="output-card">
+            <h3 class="output-label">Preparedness Score</h3>
+            <p id="outputPrepScore" class="output-value">0%</p>
+          </div>
+        </div>
+
+        <div class="output-card mb-6">
+          <h3 class="output-label">Safety Actions</h3>
+          <ul id="outputSafetyActions" class="output-list"></ul>
+        </div>
+
+        <div class="output-card mb-6">
+          <h3 class="output-label">Emergency Contacts</h3>
+          <ul id="outputContacts" class="output-list"></ul>
+        </div>
+
+        <div class="output-card mb-6">
+          <h3 class="output-label">Status</h3>
+          <p id="outputStatus" class="output-status">Needs Improvement</p>
+        </div>
+
+        <!-- JSON Code View (Collapsible) -->
+        <details class="json-details">
+          <summary class="json-summary">View JSON Code</summary>
+          <div class="json-container mt-4">
+            <div class="json-header">
+              <div class="flex items-center gap-2">
+                <span class="json-dot json-dot-red"></span>
+                <span class="json-dot json-dot-yellow"></span>
+                <span class="json-dot json-dot-green"></span>
+                <span class="json-label">Live JSON Response</span>
+              </div>
+              <button data-action="copy-json" class="copy-json-button">
+                <span class="copy-icon">📋</span>
+                <span>Copy JSON</span>
+              </button>
+            </div>
+            <div class="json-body">
+              <pre><code id="jsonOutput" class="json-code"></code></pre>
+            </div>
+          </div>
+        </details>
+      </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container mx-auto px-4 py-8 text-center">
+        <h3 class="text-2xl font-bold mb-2 dark:text-white">SafeCampus</h3>
+        <p class="text-gray-600 dark:text-gray-400 mb-4">Emergency Preparedness System</p>
+        <p class="text-sm text-gray-500 dark:text-gray-500">
+          Built for campus safety • Practice now, respond better in real emergencies
+        </p>
+      </div>
+    </footer>
+
+    <!-- Guidelines Modal Popup -->
+    <div id="guidelinesModal" class="modal-overlay">
+      <div class="modal-container">
+        <div class="modal-header">
+          <div class="modal-title-section">
+            <span id="modalIcon" class="modal-icon">🔥</span>
+            <h2 id="modalTitle" class="modal-title">Emergency Guidelines</h2>
+          </div>
+          <button data-action="close-modal" class="modal-close">✕</button>
+        </div>
+        
+        <div class="modal-body">
+          <div id="modalContent" class="modal-content">
+            <!-- Content will be populated dynamically -->
+          </div>
+        </div>
+        
+        <div class="modal-footer">
+          <button data-action="close-modal" class="modal-button">
+            <span>Got It!</span>
+            <span>✓</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Emergency Simulation Modal -->
+    <div id="simulationModal" class="simulation-overlay">
+      <div class="simulation-container">
+        <div class="simulation-header">
+          <div class="simulation-title-section">
+            <span id="simIcon" class="sim-icon">🚨</span>
+            <h2 id="simTitle" class="sim-title">Emergency Simulation</h2>
+          </div>
+          <button id="stopSimulation" class="sim-close">Stop Simulation</button>
+        </div>
+        
+        <div class="simulation-body">
+          <div id="simDisasterName" class="sim-disaster-name">EARTHQUAKE DRILL</div>
+          
+          <div class="sim-progress">
+            <span id="simProgressText" class="sim-progress-text">Simulation Progress: Step 0 of 0</span>
+            <div class="sim-progress-bar">
+              <div id="simProgressFill" class="sim-progress-fill"></div>
+            </div>
+          </div>
+          
+          <div id="simStepsContainer" class="sim-steps-container">
+            <!-- Steps will be populated dynamically -->
+          </div>
+          
+          <div id="simCompletionMessage" class="sim-completion hidden">
+            <div class="sim-completion-icon">✅</div>
+            <h3>Simulation Completed</h3>
+            <p>You are now better prepared for this emergency.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

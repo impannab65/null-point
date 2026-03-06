@@ -1,0 +1,143 @@
+{
+  "dataset_info": {
+    "name": "Campus Emergency Detection Dataset",
+    "version": "2.0",
+    "last_updated": "2026-03-06",
+    "total_records": 1500,
+    "accuracy_baseline": 95.2
+  },
+  "fire_detection": [
+    {
+      "id": 1,
+      "timestamp": "2026-03-01T08:15:00Z",
+      "location": "Building A - Floor 3",
+      "temperature": 85.5,
+      "smoke_level": 0.72,
+      "detection_confidence": 98.5,
+      "alert_triggered": true
+    },
+    {
+      "id": 2,
+      "timestamp": "2026-03-01T14:30:00Z",
+      "location": "Library - Main Hall",
+      "temperature": 22.3,
+      "smoke_level": 0.05,
+      "detection_confidence": 99.1,
+      "alert_triggered": false
+    },
+    {
+      "id": 3,
+      "timestamp": "2026-03-02T10:45:00Z",
+      "location": "Cafeteria - Kitchen",
+      "temperature": 92.1,
+      "smoke_level": 0.85,
+      "detection_confidence": 97.8,
+      "alert_triggered": true
+    }
+  ],
+  "seismic_activity": [
+    {
+      "id": 1,
+      "timestamp": "2026-03-01T12:20:00Z",
+      "magnitude": 3.2,
+      "depth_km": 15,
+      "epicenter_distance_km": 45,
+      "detection_confidence": 96.2,
+      "alert_triggered": false
+    },
+    {
+      "id": 2,
+      "timestamp": "2026-03-03T18:55:00Z",
+      "magnitude": 4.7,
+      "depth_km": 10,
+      "epicenter_distance_km": 32,
+      "detection_confidence": 98.9,
+      "alert_triggered": true
+    },
+    {
+      "id": 3,
+      "timestamp": "2026-03-04T22:10:00Z",
+      "magnitude": 2.8,
+      "depth_km": 20,
+      "epicenter_distance_km": 58,
+      "detection_confidence": 94.5,
+      "alert_triggered": false
+    }
+  ],
+  "flood_monitoring": [
+    {
+      "id": 1,
+      "timestamp": "2026-03-01T06:00:00Z",
+      "location": "Basement Level 1",
+      "water_level_cm": 5,
+      "rainfall_mm": 15.2,
+      "detection_confidence": 94.7,
+      "alert_triggered": false
+    },
+    {
+      "id": 2,
+      "timestamp": "2026-03-02T16:30:00Z",
+      "location": "Parking Lot B",
+      "water_level_cm": 25,
+      "rainfall_mm": 82.5,
+      "detection_confidence": 97.3,
+      "alert_triggered": true
+    },
+    {
+      "id": 3,
+      "timestamp": "2026-03-05T08:15:00Z",
+      "location": "Sports Complex",
+      "water_level_cm": 8,
+      "rainfall_mm": 22.8,
+      "detection_confidence": 95.1,
+      "alert_triggered": false
+    }
+  ],
+  "storm_tracking": [
+    {
+      "id": 1,
+      "timestamp": "2026-03-01T14:00:00Z",
+      "wind_speed_kmh": 35,
+      "pressure_mb": 1010,
+      "storm_category": "Low",
+      "detection_confidence": 97.1,
+      "alert_triggered": false
+    },
+    {
+      "id": 2,
+      "timestamp": "2026-03-03T20:45:00Z",
+      "wind_speed_kmh": 75,
+      "pressure_mb": 985,
+      "storm_category": "Moderate",
+      "detection_confidence": 98.6,
+      "alert_triggered": true
+    },
+    {
+      "id": 3,
+      "timestamp": "2026-03-04T11:30:00Z",
+      "wind_speed_kmh": 28,
+      "pressure_mb": 1015,
+      "storm_category": "Low",
+      "detection_confidence": 96.8,
+      "alert_triggered": false
+    }
+  ],
+  "training_metrics": {
+    "total_samples": 1500,
+    "true_positives": 1425,
+    "false_positives": 22,
+    "true_negatives": 43,
+    "false_negatives": 10,
+    "overall_accuracy": 96.8,
+    "precision": 98.5,
+    "recall": 99.3,
+    "f1_score": 98.9
+  },
+  "sensor_network": {
+    "total_sensors": 250,
+    "active_sensors": 248,
+    "offline_sensors": 2,
+    "last_calibration": "2026-03-01",
+    "next_maintenance": "2026-04-01"
+  }
+}

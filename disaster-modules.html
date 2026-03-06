@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Learning Modules</title>
+    <!-- Favicon to prevent 404 error -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚨</text></svg>">
+    <link rel="stylesheet" href="disaster-style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚨 Disaster Learning Modules</h1>
+            <p>Select a disaster type to learn emergency response procedures</p>
+        </header>
+
+        <!-- Disaster Cards Grid -->
+        <div class="cards-grid">
+            <!-- Earthquake Card -->
+            <div class="disaster-card">
+                <div class="card-icon">🏚️</div>
+                <h3 class="card-title">Earthquake</h3>
+                <p class="card-description">Protect yourself during ground shaking and seismic activity</p>
+                <button class="guide-button" data-disaster="earthquake">View Response Guide</button>
+            </div>
+
+            <!-- Fire Card -->
+            <div class="disaster-card">
+                <div class="card-icon">🔥</div>
+                <h3 class="card-title">Fire</h3>
+                <p class="card-description">Quick response to fire emergencies and evacuation</p>
+                <button class="guide-button" data-disaster="fire">View Response Guide</button>
+            </div>
+
+            <!-- Flood Card -->
+            <div class="disaster-card">
+                <div class="card-icon">🌊</div>
+                <h3 class="card-title">Flood</h3>
+                <p class="card-description">Water safety and evacuation procedures</p>
+                <button class="guide-button" data-disaster="flood">View Response Guide</button>
+            </div>
+
+            <!-- Cyclone Card -->
+            <div class="disaster-card">
+                <div class="card-icon">🌀</div>
+                <h3 class="card-title">Cyclone</h3>
+                <p class="card-description">Protection during severe storms and high winds</p>
+                <button class="guide-button" data-disaster="cyclone">View Response Guide</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Popup -->
+    <div id="responseModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Emergency Response Guide</h2>
+                <button class="close-button" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>Safety Steps:</h3>
+                <ul id="stepsList"></ul>
+                <div id="contactsSection">
+                    <h3>Emergency Contacts:</h3>
+                    <ul id="contactsList"></ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="got-it-button" id="gotItButton">Got It!</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="disaster-script.js"></script>
+</body>
+</html>
