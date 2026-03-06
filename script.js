@@ -1361,7 +1361,6 @@ const safetyTips = [
 ];
 
 let currentTipIndex = 0;
-let voiceEnabled = false;
 let emergencyTimerInterval = null;
 let emergencyThemeActive = false;
 let safetyTipsInterval = null;
@@ -1369,7 +1368,7 @@ let safetyTipsInterval = null;
 // ========================================
 // PANIC BUTTON & EMERGENCY MODE
 // ========================================
-function activateEmergencyMode() {
+function openEmergency() {
   const modal = document.getElementById('emergencyModal');
   if (modal) {
     modal.classList.remove('hidden');
@@ -1379,7 +1378,7 @@ function activateEmergencyMode() {
   }
 }
 
-function deactivateEmergencyMode() {
+function closeEmergency() {
   const modal = document.getElementById('emergencyModal');
   if (modal) {
     modal.classList.add('hidden');
@@ -1387,31 +1386,6 @@ function deactivateEmergencyMode() {
     document.body.style.overflow = '';
     console.log('✅ Emergency mode closed');
   }
-}
-
-// ========================================
-// VOICE GUIDANCE SYSTEM
-// ========================================
-function toggleVoiceGuidance() {
-  voiceEnabled = !voiceEnabled;
-  const btn = document.getElementById('voiceToggle');
-  if (btn) {
-    btn.classList.toggle('active', voiceEnabled);
-  }
-  console.log('🔊 Voice Guidance:', voiceEnabled ? 'ON' : 'OFF');
-}
-
-function speakSafetyActions(actions) {
-  if (!voiceEnabled) return;
-  
-  const utterance = new SpeechSynthesisUtterance(actions.join('. '));
-  utterance.rate = 0.9;
-  utterance.pitch = 1;
-  utterance.volume = 1;
-  
-  speechSynthesis.cancel();
-  speechSynthesis.speak(utterance);
-  console.log('🔊 Speaking safety actions');
 }
 
 // ========================================
@@ -1573,19 +1547,33 @@ document.addEventListener('DOMContentLoaded', () => {
   // Panic Button
   const panicButton = document.getElementById('panicButton');
   if (panicButton) {
-    panicButton.addEventListener('click', activateEmergencyMode);
+    panicButton.addEventListener('click', openEmergency);
   }
 
   // Emergency Mode Close Button
   const closeEmergencyBtn = document.getElementById('closeEmergency');
   if (closeEmergencyBtn) {
-    closeEmergencyBtn.addEventListener('click', deactivateEmergencyMode);
+    closeEmergencyBtn.addEventListener('click', closeEmergency);
   }
 
-  // Voice Guidance Toggle
-  const voiceToggle = document.getElementById('voiceToggle');
-  if (voiceToggle) {
-    voiceToggle.addEventListener('click', toggleVoiceGuidance);
+  // Close Emergency Modal on ESC key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const modal = document.getElementById('emergencyModal');
+      if (modal && modal.classList.contains('active')) {
+        closeEmergency();
+      }
+    }
+  });
+
+  // Close Emergency Modal when clicking outside
+  const emergencyModal = document.getElementById('emergencyModal');
+  if (emergencyModal) {
+    emergencyModal.addEventListener('click', (e) => {
+      if (e.target === emergencyModal) {
+        closeEmergency();
+      }
+    });
   }
 
   // Safety Tips Next Button
